@@ -1,9 +1,9 @@
-#define ENA   14          // Enable/speed motors FWD          GPIO14(D5)
-#define ENB   12          // Enable/speed motors Steer        GPIO12(D6)
-#define IN_1  15          // L298N in1 motors Forward         GPIO15(D8)
-#define IN_2  13          // L298N in2 motors Back            GPIO13(D7)
-#define IN_3  2           // L298N in3 motors Left            GPIO2(D4)
-#define IN_4  0           // L298N in4 motors Right           GPIO0(D3)
+#define ENA   32           // Enable/speed motors FWD         
+#define ENB   33           // Enable/speed motors Steer        
+#define IN_1  27           // L298N in1 motors Forward         
+#define IN_2  14           // L298N in2 motors Back            
+#define IN_3  12           // L298N in3 motors Left            
+#define IN_4  13           // L298N in4 motors Right           
 
 #include <WiFi.h>
 
@@ -87,12 +87,12 @@ void move() {
   if(steer > 0){
     digitalWrite(IN_3, HIGH);
     digitalWrite(IN_4, LOW);
-    analogWrite(ENA, steerMapped);
+    analogWrite(ENB, steerMapped);
     Serial.println("left " + String(steerMapped));
   } else {
     digitalWrite(IN_3, LOW);
     digitalWrite(IN_4, HIGH);
-    analogWrite(ENA, steerMapped);
+    analogWrite(ENB, steerMapped);
     Serial.println("right " + String(steerMapped));
   }
 
